@@ -1,0 +1,13 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "coding-challenges-hs:lib"
+
+    - path: "./app/Main.hs"
+      component: "coding-challenges-hs:exe:coding-challenges-hs-exe"
+
+    - path: "./app/Paths_coding_challenges_hs.hs"
+      component: "coding-challenges-hs:exe:coding-challenges-hs-exe"
+
+    - path: "./test"
+      component: "coding-challenges-hs:test:coding-challenges-hs-test"
