@@ -1,9 +1,12 @@
 import Data.Angle (angleFromDegrees)
-import Projection (Camera2D (..), Point2D, px, py)
+import Projection (Camera2D (..), Point2D, px, py, p2D)
 import Test.Hspec
 
 main :: IO ()
 main = hspec $ do
+  describe "Projection on 2D" $ do
+    axisProjectionTest p2D 
+
   describe "Projection on x" $ do
     axisProjectionTest px
 

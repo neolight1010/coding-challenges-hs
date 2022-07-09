@@ -1,6 +1,7 @@
 module Projection
   ( Camera2D (..),
     Point2D,
+    p2D,
     px,
     py,
   )
@@ -15,12 +16,8 @@ data Camera2D = Camera2D
 
 type Point2D = (Float, Float)
 
-type CameraX = Camera2D
-
-type PointXZ = Point2D
-
-px :: CameraX -> PointXZ -> Float
-px cam (x', z') = dividend / divisor
+p2D :: Camera2D -> Point2D -> Float
+p2D cam (x', z') = dividend / divisor
   where
     dividend = x' * camW * tanAngle camAngle
     divisor = z' + camW * tanAngle camAngle
@@ -28,9 +25,20 @@ px cam (x', z') = dividend / divisor
     camAngle = angle cam
     camW = w cam
 
+-- X axis aliases
+
+type CameraX = Camera2D
+
+type PointXZ = Point2D
+
+px :: CameraX -> PointXZ -> Float
+px = p2D
+
+-- Y axis aliases
+
 type CameraY = Camera2D
 
 type PointYZ = Point2D
 
 py :: CameraY -> PointYZ -> Float
-py = px
+py = p2D
