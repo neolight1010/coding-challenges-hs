@@ -23,6 +23,7 @@ dependencies:
 - base >= 4.7 && < 5
 - hspec
 - gloss
+- Data-Angle
 
 library:
   source-dirs: src
