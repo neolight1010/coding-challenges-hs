@@ -28,6 +28,7 @@ library
       Lib
       Projection
       Projection.Project2D
+      Projection.Project3D
   other-modules:
       Paths_coding_challenges_hs
   hs-source-dirs:
