@@ -16,6 +16,7 @@ data Camera2D = Camera2D
 
 type Point2D = (Float, Float)
 
+-- |Projects a 2D point to 1D.
 p2D :: Camera2D -> Point2D -> Float
 p2D cam (x', z') = dividend / divisor
   where
@@ -31,6 +32,7 @@ type CameraX = Camera2D
 
 type PointXZ = Point2D
 
+-- |Projects a 2D point to 1D on the X axis. Alias for p2D.
 px :: CameraX -> PointXZ -> Float
 px = p2D
 
@@ -40,5 +42,6 @@ type CameraY = Camera2D
 
 type PointYZ = Point2D
 
+-- |Projects a 2D point to 1D on the Y axis. Alias for p2D.
 py :: CameraY -> PointYZ -> Float
 py = p2D
