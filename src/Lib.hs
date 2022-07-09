@@ -32,8 +32,8 @@ newStarField =
   StarField
     { stars =
         [ Star
-            { x = 0,
-              y = 0,
+            { x = 150,
+              y = -50,
               z = 20
             },
           Star
@@ -54,7 +54,18 @@ renderStarField starField = pictures $ map renderStar (stars starField)
 -- px star = p2D
 
 updateStarField :: ViewPort -> Float -> StarField -> StarField
-updateStarField _ _ starField = starField
+updateStarField _ _ starField =
+  StarField
+    { stars = map updateStar oldStars
+    }
+  where
+    oldStars = stars starField
+    updateStar star =
+      Star
+        { x = x star,
+          y = y star,
+          z = z star - 1
+        }
 
 camera :: Camera3D Float
 camera =
