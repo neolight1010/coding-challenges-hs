@@ -15,7 +15,7 @@ data Camera2D a = Camera2D
 
 type Point2D a = (a, a)
 
--- |Projects a 2D point to 1D.
+-- | Projects a 2D point to 1D.
 p2D :: Floating a => Camera2D a -> Point2D a -> a
 p2D cam (x', z') = dividend / divisor
   where
