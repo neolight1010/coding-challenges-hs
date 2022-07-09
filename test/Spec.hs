@@ -1,5 +1,5 @@
 import Data.Angle (angleFromDegrees)
-import Projection (Camera (..), px, py)
+import Projection (Camera2D (..), Point2D, px, py)
 import Test.Hspec
 
 main :: IO ()
@@ -10,16 +10,16 @@ main = hspec $ do
   describe "Projection on y" $ do
     axisProjectionTest py
 
-axisProjectionTest :: (Camera -> (Float, Float) -> Float) -> SpecWith ()
+axisProjectionTest :: (Camera2D -> Point2D -> Float) -> SpecWith ()
 axisProjectionTest proj = do
   it "returns 0 if x is 0" $ do
-    let camera = Camera {angle = angleFromDegrees 30, w = 100}
+    let camera = Camera2D {angle = angleFromDegrees 30, w = 100}
 
     proj camera (0, 30) `shouldBe` 0
 
   it "returns the value on the boundaries of the camera" $ do
     let cameraW = 1
     let farW = cameraW + 1
-    let camera = Camera {angle = angleFromDegrees 45, w = cameraW}
+    let camera = Camera2D {angle = angleFromDegrees 45, w = cameraW}
 
     px camera (farW, 1) `shouldBe` cameraW

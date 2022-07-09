@@ -1,5 +1,6 @@
 module Projection
-  ( Camera (..),
+  ( Camera2D (..),
+    Point2D,
     px,
     py,
   )
@@ -7,14 +8,18 @@ where
 
 import Data.Angle (Angle, tanAngle)
 
-data Camera = Camera
+data Camera2D = Camera2D
   { angle :: Angle Float,
     w :: Float
   }
 
-type PointXZ = (Float, Float)
+type Point2D = (Float, Float)
 
-px :: Camera -> PointXZ -> Float
+type CameraX = Camera2D
+
+type PointXZ = Point2D
+
+px :: CameraX -> PointXZ -> Float
 px cam (x', z') = dividend / divisor
   where
     dividend = x' * camW * tanAngle camAngle
@@ -23,7 +28,9 @@ px cam (x', z') = dividend / divisor
     camAngle = angle cam
     camW = w cam
 
-type PointYZ = (Float, Float)
+type CameraY = Camera2D
 
-py :: Camera -> PointYZ -> Float
+type PointYZ = Point2D
+
+py :: CameraY -> PointYZ -> Float
 py = px
