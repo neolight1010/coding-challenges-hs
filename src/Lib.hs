@@ -3,7 +3,7 @@ module Lib
   )
 where
 
-import Graphics.Gloss (Display (InWindow), Picture, circle, pictures, simulate, white, color, black, thickCircle, circleSolid, translate)
+import Graphics.Gloss (Display (InWindow), Picture, black, circle, circleSolid, color, pictures, simulate, thickCircle, translate, white)
 import Graphics.Gloss.Data.ViewPort (ViewPort)
 
 starFieldIO :: IO ()
@@ -31,16 +31,18 @@ newStarField =
         [ Star
             { x = 0,
               y = 0
+            },
+          Star
+            { x = -150,
+              y = 200
             }
-        , Star {
-            x = -150,
-            y = 200 
-          }
         ]
     }
 
 renderStarField :: StarField -> Picture
-renderStarField starField = pictures $ map (\star -> translate (x star) (y star) $ color white $ circleSolid 5) (stars starField)
+renderStarField starField = pictures $ map renderStar (stars starField)
+  where
+    renderStar star = translate (x star) (y star) $ color white $ circleSolid 5
 
 updateStarField :: ViewPort -> Float -> StarField -> StarField
 updateStarField _ _ starField = starField
