@@ -11,9 +11,9 @@ import Numeric ()
 data Camera2D a = Camera2D
   { angle :: Angle a,
     -- | Maximum coordinate of the projection screen. In 1D, these usually go
-    -- from -w to w so -w is the leftmost coordinate of the screen and w the
+    -- from -s to s so -w is the leftmost coordinate of the screen and w the
     -- rightmost one.
-    w :: a
+    s :: a
   }
 
 type Point2D a = (a, a)
@@ -27,4 +27,4 @@ p2D cam (x', z') = dividend / divisor
     divisor = z' + camW * tanAngle camAngle
 
     camAngle = angle cam
-    camW = w cam
+    camW = s cam
