@@ -1,5 +1,5 @@
 import Data.Angle (angleFromDegrees)
-import Projection (Camera2D (..), Point2D, px, py, p2D)
+import Projection.Project2D (Camera2D (..), Point2D, px, py, p2D)
 import Test.Hspec
 
 main :: IO ()

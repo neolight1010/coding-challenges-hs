@@ -27,6 +27,7 @@ library
   exposed-modules:
       Lib
       Projection
+      Projection.Project2D
   other-modules:
       Paths_coding_challenges_hs
   hs-source-dirs:
