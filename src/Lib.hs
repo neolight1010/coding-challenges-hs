@@ -51,8 +51,6 @@ renderStarField starField = pictures $ map renderStar (stars starField)
       where
         (px, py) = p3D camera (x star, y star, z star)
 
--- px star = p2D
-
 updateStarField :: ViewPort -> Float -> StarField -> StarField
 updateStarField _ _ starField =
   StarField
