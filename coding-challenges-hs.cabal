@@ -26,6 +26,7 @@ source-repository head
 library
   exposed-modules:
       Lib
+      Projection
   other-modules:
       Paths_coding_challenges_hs
   hs-source-dirs:
@@ -34,6 +35,7 @@ library
   build-depends:
       base >=4.7 && <5
     , gloss
+    , hspec
   default-language: Haskell2010
 
 executable coding-challenges-hs-exe
@@ -47,6 +49,7 @@ executable coding-challenges-hs-exe
       base >=4.7 && <5
     , coding-challenges-hs
     , gloss
+    , hspec
   default-language: Haskell2010
 
 test-suite coding-challenges-hs-test
@@ -61,4 +64,5 @@ test-suite coding-challenges-hs-test
       base >=4.7 && <5
     , coding-challenges-hs
     , gloss
+    , hspec
   default-language: Haskell2010
