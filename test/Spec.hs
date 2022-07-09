@@ -7,11 +7,11 @@ main = hspec $ do
   describe "Projection on 2D" $ do
     axisProjectionTest p2D
 
-  describe "Projection on x" $ do
-    axisProjectionTest px
+    describe "Projection on x" $ do
+      axisProjectionTest px
 
-  describe "Projection on y" $ do
-    axisProjectionTest py
+    describe "Projection on y" $ do
+      axisProjectionTest py
 
 axisProjectionTest :: (Camera2D Float -> Point2D Float -> Float) -> SpecWith ()
 axisProjectionTest proj = do
