@@ -1,6 +1,7 @@
 module Projection
   ( Camera (..),
     px,
+    py,
   )
 where
 
@@ -21,3 +22,8 @@ px cam (x', z') = dividend / divisor
 
     camAngle = angle cam
     camW = w cam
+
+type PointYZ = (Float, Float)
+
+py :: Camera -> PointYZ -> Float
+py = px

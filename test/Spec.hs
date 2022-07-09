@@ -1,11 +1,14 @@
 import Data.Angle (angleFromDegrees)
-import Projection (Camera (..), px)
+import Projection (Camera (..), px, py)
 import Test.Hspec
 
 main :: IO ()
 main = hspec $ do
   describe "Projection on x" $ do
     axisProjectionTest px
+
+  describe "Projection on y" $ do
+    axisProjectionTest py
 
 axisProjectionTest :: (Camera -> (Float, Float) -> Float) -> SpecWith ()
 axisProjectionTest proj = do
