@@ -24,6 +24,7 @@ dependencies:
 - hspec
 - gloss
 - Data-Angle
+- random
 
 library:
   source-dirs: src

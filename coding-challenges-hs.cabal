@@ -39,6 +39,7 @@ library
     , base >=4.7 && <5
     , gloss
     , hspec
+    , random
   default-language: Haskell2010
 
 executable coding-challenges-hs-exe
@@ -54,6 +55,7 @@ executable coding-challenges-hs-exe
     , coding-challenges-hs
     , gloss
     , hspec
+    , random
   default-language: Haskell2010
 
 test-suite coding-challenges-hs-test
@@ -70,4 +72,5 @@ test-suite coding-challenges-hs-test
     , coding-challenges-hs
     , gloss
     , hspec
+    , random
   default-language: Haskell2010
