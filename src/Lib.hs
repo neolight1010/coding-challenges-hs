@@ -3,7 +3,7 @@ module Lib
   )
 where
 
-import Graphics.Gloss (Display (InWindow), Picture, black, circle, circleSolid, color, pictures, simulate, thickCircle, translate, white)
+import Graphics.Gloss (Display (InWindow), Picture, black, circleSolid, color, pictures, simulate, translate, white)
 import Graphics.Gloss.Data.ViewPort (ViewPort)
 
 starFieldIO :: IO ()
