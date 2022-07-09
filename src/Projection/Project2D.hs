@@ -2,8 +2,6 @@ module Projection.Project2D
   ( Camera2D (..),
     Point2D,
     p2D,
-    px,
-    py,
   )
 where
 
@@ -26,23 +24,3 @@ p2D cam (x', z') = dividend / divisor
 
     camAngle = angle cam
     camW = w cam
-
--- X axis aliases
-
-type CameraX = Camera2D
-
-type PointXZ a = Point2D a
-
--- |Projects a 2D point to 1D on the X axis. Alias for p2D.
-px :: Floating a => CameraX a -> PointXZ a -> a
-px = p2D
-
--- Y axis aliases
-
-type CameraY = Camera2D
-
-type PointYZ a = Point2D a
-
--- |Projects a 2D point to 1D on the Y axis. Alias for p2D.
-py :: Floating a => CameraY a -> PointYZ a -> a
-py = p2D
