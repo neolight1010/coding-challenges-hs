@@ -3,8 +3,10 @@ module Lib
   )
 where
 
+import Data.Angle (angleFromDegrees)
 import Graphics.Gloss (Display (InWindow), Picture, black, circleSolid, color, pictures, simulate, translate, white)
 import Graphics.Gloss.Data.ViewPort (ViewPort)
+import Projection.Project3D (Camera3D (..), p3D)
 
 starFieldIO :: IO ()
 starFieldIO = simulate (InWindow "Hello World" (width, height) (20, 20)) black 60 newStarField renderStarField updateStarField
@@ -21,7 +23,8 @@ newtype StarField = StarField
 
 data Star = Star
   { x :: Float,
-    y :: Float
+    y :: Float,
+    z :: Float
   }
 
 newStarField :: StarField
@@ -30,11 +33,13 @@ newStarField =
     { stars =
         [ Star
             { x = 0,
-              y = 0
+              y = 0,
+              z = 20
             },
           Star
             { x = -150,
-              y = 200
+              y = 200,
+              z = 40
             }
         ]
     }
@@ -42,7 +47,20 @@ newStarField =
 renderStarField :: StarField -> Picture
 renderStarField starField = pictures $ map renderStar (stars starField)
   where
-    renderStar star = translate (x star) (y star) $ color white $ circleSolid 5
+    renderStar star = translate px py $ color white $ circleSolid 5
+      where
+        (px, py) = p3D camera (x star, y star, z star)
+
+-- px star = p2D
 
 updateStarField :: ViewPort -> Float -> StarField -> StarField
 updateStarField _ _ starField = starField
+
+camera :: Camera3D Float
+camera =
+  Camera3D
+    { xAngle = angleFromDegrees (30 :: Integer),
+      yAngle = angleFromDegrees (30 :: Integer),
+      w = fromIntegral width,
+      h = fromIntegral height
+    }
