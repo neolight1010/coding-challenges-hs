@@ -10,6 +10,9 @@ import Numeric ()
 
 data Camera2D a = Camera2D
   { angle :: Angle a,
+    -- | Maximum coordinate of the projection screen. In 1D, these usually go
+    -- from -w to w so -w is the leftmost coordinate of the screen and w the
+    -- rightmost one.
     w :: a
   }
 

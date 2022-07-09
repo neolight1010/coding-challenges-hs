@@ -6,7 +6,13 @@ import qualified Projection.Project2D as P2
 data Camera3D a = Camera3D
   { xAngle :: Angle a,
     yAngle :: Angle a,
+    -- | Maximum x value of the projection screen. Usually, these go from -w to
+    -- w, so -w is the leftmost coordinate of the screen and w the rightmost
+    -- one.
     w :: a,
+    -- | Maximum y value of the projection screen. Usually, these go from -h to
+    -- h so -h is the bottommost coordinate of the screen and h is the
+    -- uppermost one.
     h :: a
   }
 
