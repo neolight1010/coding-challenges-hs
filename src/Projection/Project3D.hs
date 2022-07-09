@@ -10,7 +10,7 @@ data Camera3D a = Camera3D
     h :: a
   }
 
--- | Point in 3D space. The third value is expected to be the depth.
+-- | Point in 3D space. The third value is expected to be the depth or Z value.
 type Point3D a = (a, a, a)
 
 -- | Projects a 3D point in 2D.
