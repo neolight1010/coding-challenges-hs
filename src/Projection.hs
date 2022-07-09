@@ -4,10 +4,10 @@ module Projection
   )
 where
 
-import Graphics.Gloss.Geometry.Angle (degToRad)
+import Data.Angle (Angle, tanAngle)
 
 data Camera = Camera
-  { angle :: Float,
+  { angle :: Angle Float,
     w :: Float
   }
 
@@ -16,8 +16,8 @@ type PointXZ = (Float, Float)
 px :: Camera -> PointXZ -> Float
 px cam (x', z') = dividend / divisor
   where
-    dividend = x' * camW * tan camAngleRad
-    divisor = z' + camW * tan camAngleRad
+    dividend = x' * camW * tanAngle camAngle
+    divisor = z' + camW * tanAngle camAngle
 
-    camAngleRad = degToRad $ angle cam
+    camAngle = angle cam
     camW = w cam
