@@ -37,18 +37,21 @@ newStarField _ =
         map
           ( \i ->
               let gen = mkStdGen $ i + 30
+                  (randX, gen') = genRandX gen
+                  (randY, gen'') = genRandY gen'
+                  (randZ, _) = genRandZ gen''
                in Star
-                    { x = fst $ genRandX gen,
-                      y = fst $ genRandY gen,
-                      z = fst $ genRandZ gen
+                    { x = randX,
+                      y = randY,
+                      z = randZ
                     }
           )
-          [(0 :: Int) .. 50]
+          [(0 :: Int) .. 500]
     }
   where
     genRandX = uniformR (fromIntegral $ -width, fromIntegral width)
     genRandY = uniformR (fromIntegral $ -height, fromIntegral height)
-    genRandZ = uniformR (100 :: Float, 500)
+    genRandZ = uniformR (1 :: Float, 100)
 
 renderStarField :: StarField -> Picture
 renderStarField starField = pictures $ map renderStar (stars starField)
