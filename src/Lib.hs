@@ -7,9 +7,12 @@ import Data.Angle (angleFromDegrees)
 import Graphics.Gloss (Display (InWindow), Picture, black, circleSolid, color, pictures, simulate, translate, white)
 import Graphics.Gloss.Data.ViewPort (ViewPort)
 import Projection.Project3D (Camera3D (..), p3D)
+import System.Random (RandomGen, mkStdGen, uniformR)
 
 starFieldIO :: IO ()
-starFieldIO = simulate (InWindow "Hello World" (width, height) (20, 20)) black 60 newStarField renderStarField updateStarField
+starFieldIO = simulate (InWindow "Hello World" (width, height) (20, 20)) black 60 (newStarField gen) renderStarField updateStarField
+  where
+    gen = mkStdGen 500
 
 width :: Int
 width = 600
@@ -27,22 +30,25 @@ data Star = Star
     z :: Float
   }
 
-newStarField :: StarField
-newStarField =
+newStarField :: RandomGen g => g -> StarField
+newStarField _ =
   StarField
     { stars =
-        [ Star
-            { x = 150,
-              y = -50,
-              z = 20
-            },
-          Star
-            { x = -150,
-              y = 200,
-              z = 40
-            }
-        ]
+        map
+          ( \i ->
+              let gen = mkStdGen $ i + 30
+               in Star
+                    { x = fst $ genRandX gen,
+                      y = fst $ genRandY gen,
+                      z = fst $ genRandZ gen
+                    }
+          )
+          [(0 :: Int) .. 50]
     }
+  where
+    genRandX = uniformR (fromIntegral $ -width, fromIntegral width)
+    genRandY = uniformR (fromIntegral $ -height, fromIntegral height)
+    genRandZ = uniformR (100 :: Float, 500)
 
 renderStarField :: StarField -> Picture
 renderStarField starField = pictures $ map renderStar (stars starField)
