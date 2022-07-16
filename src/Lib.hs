@@ -10,7 +10,7 @@ import Projection.Project3D (Camera3D (..), p3D)
 import System.Random (RandomGen, mkStdGen, uniformR)
 
 starFieldIO :: IO ()
-starFieldIO = simulate (InWindow "Hello World" (width, height) (20, 20)) black 60 (newStarField gen) renderStarField updateStarField
+starFieldIO = simulate (InWindow "Star Field" (width, height) (20, 20)) black 60 (newStarField gen) renderStarField updateStarField
   where
     gen = mkStdGen 500
 
