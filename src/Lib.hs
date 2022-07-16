@@ -86,17 +86,13 @@ updateStarField _ _ starField =
             i = floor $ x star - y star * z star
             newRandStar = newStar gen
           in
-            [Star {
-              x = x newRandStar,
-              y = y newRandStar,
+            return newRandStar {
               z = fromIntegral depth
-            }]
+            }
         else
           return
-            Star
-              { x = x star,
-                y = y star,
-                z = z star - velocity
+            star
+              { z = z star - velocity
               }
 
 camera :: Camera3D Float
