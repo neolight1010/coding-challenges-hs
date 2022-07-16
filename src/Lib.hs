@@ -15,7 +15,7 @@ starFieldIO = simulate (InWindow "Hello World" (width, height) (20, 20)) black 6
     gen = mkStdGen 500
 
 width :: Int
-width = 600
+width = 800
 
 height :: Int
 height = 600
