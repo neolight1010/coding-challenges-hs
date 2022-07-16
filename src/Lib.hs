@@ -51,7 +51,7 @@ newStarField _ =
   where
     genRandX = uniformR (fromIntegral $ -width, fromIntegral width)
     genRandY = uniformR (fromIntegral $ -height, fromIntegral height)
-    genRandZ = uniformR (1 :: Float, 100)
+    genRandZ = uniformR (1 :: Float, 800)
 
 renderStarField :: StarField -> Picture
 renderStarField starField = pictures $ map renderStar (stars starField)
@@ -63,16 +63,20 @@ renderStarField starField = pictures $ map renderStar (stars starField)
 updateStarField :: ViewPort -> Float -> StarField -> StarField
 updateStarField _ _ starField =
   StarField
-    { stars = map updateStar oldStars
+    { stars = oldStars >>= updateStar
     }
   where
     oldStars = stars starField
     updateStar star =
-      Star
-        { x = x star,
-          y = y star,
-          z = z star - 1
-        }
+      if z star <= 0
+        then []
+        else
+          return
+            Star
+              { x = x star,
+                y = y star,
+                z = z star - 1
+              }
 
 camera :: Camera3D Float
 camera =
