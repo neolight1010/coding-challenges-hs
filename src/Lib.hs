@@ -23,6 +23,9 @@ height = 600
 depth :: Int
 depth = 800
 
+velocity :: Float
+velocity = 3
+
 newtype StarField = StarField
   { stars :: [Star]
   }
@@ -79,7 +82,7 @@ updateStarField _ _ starField =
             Star
               { x = x star,
                 y = y star,
-                z = z star - 1
+                z = z star - velocity
               }
 
 camera :: Camera3D Float
