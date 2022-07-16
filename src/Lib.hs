@@ -80,7 +80,12 @@ updateStarField _ _ starField =
     oldStars = stars starField
     updateStar star =
       if z star < 0
-        then []
+        then 
+          let
+            gen = mkStdGen i
+            i = floor $ x star - y star * z star
+          in
+            [newStar gen]
         else
           return
             Star
