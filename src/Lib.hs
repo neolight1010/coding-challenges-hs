@@ -20,6 +20,9 @@ width = 600
 height :: Int
 height = 600
 
+depth :: Int
+depth = 800
+
 newtype StarField = StarField
   { stars :: [Star]
   }
@@ -51,14 +54,15 @@ newStarField _ =
   where
     genRandX = uniformR (fromIntegral $ -width, fromIntegral width)
     genRandY = uniformR (fromIntegral $ -height, fromIntegral height)
-    genRandZ = uniformR (1 :: Float, 800)
+    genRandZ = uniformR (1 :: Float, fromIntegral depth)
 
 renderStarField :: StarField -> Picture
 renderStarField starField = pictures $ map renderStar (stars starField)
   where
-    renderStar star = translate px py $ color white $ circleSolid 5
+    renderStar star = translate px py $ color white $ circleSolid r
       where
         (px, py) = p3D camera (x star, y star, z star)
+        r = (z star - fromIntegral depth) * 0.007
 
 updateStarField :: ViewPort -> Float -> StarField -> StarField
 updateStarField _ _ starField =
@@ -68,7 +72,7 @@ updateStarField _ _ starField =
   where
     oldStars = stars starField
     updateStar star =
-      if z star <= 0
+      if z star < 0
         then []
         else
           return
