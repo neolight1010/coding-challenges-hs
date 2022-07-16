@@ -84,8 +84,13 @@ updateStarField _ _ starField =
           let
             gen = mkStdGen i
             i = floor $ x star - y star * z star
+            newRandStar = newStar gen
           in
-            [newStar gen]
+            [Star {
+              x = x newRandStar,
+              y = y newRandStar,
+              z = fromIntegral depth
+            }]
         else
           return
             Star
