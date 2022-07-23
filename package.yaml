@@ -32,8 +32,8 @@ library:
     - -Wall
 
 executables:
-  coding-challenges-hs-exe:
-    main:                Main.hs
+  star-field:
+    main:                StarFieldMain.hs
     source-dirs:         app
     ghc-options:
     - -threaded

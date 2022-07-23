@@ -25,10 +25,10 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
       Projection
       Projection.Project2D
       Projection.Project3D
+      StarField
   other-modules:
       Paths_coding_challenges_hs
   hs-source-dirs:
@@ -42,8 +42,8 @@ library
     , random
   default-language: Haskell2010
 
-executable coding-challenges-hs-exe
-  main-is: Main.hs
+executable star-field
+  main-is: StarFieldMain.hs
   other-modules:
       Paths_coding_challenges_hs
   hs-source-dirs:

@@ -1,4 +1,4 @@
-module Lib
+module StarField
   ( starFieldIO,
   )
 where
