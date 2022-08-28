@@ -33,7 +33,18 @@ library:
 
 executables:
   star-field:
-    main:                StarFieldMain.hs
+    main:                starField.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    - -Wall
+    dependencies:
+    - coding-challenges-hs
+
+  snake:
+    main:                snake.hs
     source-dirs:         app
     ghc-options:
     - -threaded
