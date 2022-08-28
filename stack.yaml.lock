@@ -11,10 +11,4 @@ packages:
       sha256: ee5bfc64973ad9a44f731319efdc02436b90a6a278d3e77b501cb541499019f5
   original:
     hackage: Data-Angle-0.9
-snapshots:
-- completed:
-    size: 618951
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/19/14.yaml
-    sha256: 4c31d4ef975b0211078862566aedf3b82b6cea569fc2cde4c72a51e5a8d236ce
-  original:
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/19/14.yaml
+snapshots: []
