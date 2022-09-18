@@ -50,7 +50,7 @@ newtype Food = Food
   }
 
 snakeIO :: IO ()
-snakeIO = simulate (InWindow "Star Field" (width, height) (20, 20)) Color.black 60 newSnakeGame renderSnakeGame updateSnakeGame
+snakeIO = simulate (InWindow "Snake" (width, height) (20, 20)) Color.black 60 newSnakeGame renderSnakeGame updateSnakeGame
 
 renderSnakeGame :: SnakeGame -> Picture
 renderSnakeGame game = translate (-fromIntegral width / 2) (fromIntegral height / 2) $ Pictures pictures
